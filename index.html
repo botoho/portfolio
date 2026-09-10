@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botoho Sumi · Portfolio</title>
+  <!-- Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Font (Inter) for a clean look -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    body {
+      background-color: #f8fafc;
+      color: #0b1c2e;
+      scroll-behavior: smooth;
+    }
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+      transition: all 0.2s ease;
+    }
+    .navbar-brand {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #0a2540;
+    }
+    .hero-section {
+      background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+      padding: 6rem 0 5rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+    }
+    .hero-headline {
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+    }
+    .hero-subhead {
+      font-size: 1.25rem;
+      color: #475569;
+      max-width: 600px;
+    }
+    .badge-skill {
+      background-color: #eef2f6;
+      color: #1e293b;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      margin-right: 0.5rem;
+      margin-bottom: 0.5rem;
+      display: inline-block;
+      transition: all 0.15s ease;
+      border: 1px solid #e2e8f0;
+    }
+    .badge-skill:hover {
+      background-color: #ffffff;
+      border-color: #94a3b8;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    }
+    .card-project {
+      border: 1px solid #e9edf2;
+      border-radius: 20px;
+      background: #ffffff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      height: 100%;
+      overflow: hidden;
+    }
+    .card-project:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 30px -12px rgba(0, 20, 30, 0.12);
+      border-color: #cdd9e6;
+    }
+    .card-project .card-img-top {
+      height: 200px;
+      object-fit: cover;
+      background-color: #eef2f6;
+      border-bottom: 1px solid #e9edf2;
+    }
+    .card-project .card-body {
+      padding: 1.75rem 1.5rem 1.5rem;
+    }
+    .tech-tag {
+      background-color: #eef2f6;
+      color: #1e293b;
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      display: inline-block;
+      margin-right: 0.4rem;
+      margin-bottom: 0.4rem;
+    }
+    .footer {
+      background-color: #ffffff;
+      border-top: 1px solid rgba(0, 0, 0, 0.04);
+      color: #475569;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+      color: #0a2540;
+    }
+    .btn-outline-dark-custom {
+      border: 1px solid #cdd9e6;
+      background: white;
+      color: #1e293b;
+      border-radius: 40px;
+      padding: 0.6rem 1.5rem;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-outline-dark-custom:hover {
+      background: #0a2540;
+      color: white;
+      border-color: #0a2540;
+    }
+    .btn-dark-custom {
+      background: #0a2540;
+      color: white;
+      border-radius: 40px;
+      padding: 0.6rem 1.5rem;
+      font-weight: 500;
+      border: 1px solid #0a2540;
+      transition: all 0.2s;
+    }
+    .btn-dark-custom:hover {
+      background: #1e3a5f;
+      border-color: #1e3a5f;
+    }
+    .profile-icon {
+      width: 130px;
+      height: 130px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      color: #0a2540;
+      box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.08);
+    }
+    .list-contact i {
+      width: 1.5rem;
+      color: #0a2540;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg fixed-top py-3">
+    <div class="container">
+      <a class="navbar-brand" href="#"><i class="fas fa-code"></i>  Botoho Sumi</a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
+          <li class="nav-item"><a class="nav-link" href="#work">View My Works</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  
+  
+  <!-- Contact Section with Photo on Right -->
+<section class="hero-section" style="margin-top: 76px" style="background-color: #f8fafc;">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <!-- Left: Contact Details -->
+      <div class="col-lg-6">
+        <h2 class="section-title mb-3">Hi!</h2>
+        <p class="text-secondary mb-4" style="font-size: 1.05rem; line-height: 1.7;">
+          I'm Botoho Sumi — a developer and designer who enjoys building clean, functional, and user-friendly digital experiences. I create web applications and desktop applications designed to solve real-world problems and make everyday workflows more efficient.
+        </p>
+		
+		
+
+        <!-- Contact details list -->
+        <div class="mb-4">
+          <!-- Email -->
+          <a href="mailto:alex.rivera@nagalanduniversity.ac.in" class="text-decoration-none d-flex align-items-start gap-3 p-3 mb-3 rounded-4 contact-item" style="background: #ffffff; border: 1px solid #e9edf2; transition: all 0.2s ease;">
+            <div class="contact-icon-wrapper" style="width: 48px; height: 48px; background: #eef2f6; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="fas fa-envelope" style="color: #2563eb; font-size: 1.2rem;"></i>
+            </div>
+            <div>
+              <div class="project-meta-label" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.03em; font-weight: 600; color: #64748b; margin-bottom: 0.15rem;">Email</div>
+              <div class="fw-semibold" style="color: #0a2540; font-size: 0.95rem;">botohosumi@live.in</div>
+            </div>
+          </a>
+
+          <!-- Phone -->
+          <a href="tel:+919876543210" class="text-decoration-none d-flex align-items-start gap-3 p-3 mb-3 rounded-4 contact-item" style="background: #ffffff; border: 1px solid #e9edf2; transition: all 0.2s ease;">
+            <div class="contact-icon-wrapper" style="width: 48px; height: 48px; background: #eef2f6; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <i class="fas fa-phone-alt" style="color: #2563eb; font-size: 1.2rem;"></i>
+            </div>
+            <div>
+              <div class="project-meta-label" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.03em; font-weight: 600; color: #64748b; margin-bottom: 0.15rem;">Phone</div>
+              <div class="fw-semibold" style="color: #0a2540; font-size: 0.95rem;">+91 70050 19178</div>
+            </div>
+          </a>
+        </div>
+		
+		<div class="d-flex flex-wrap gap-3">
+            <a href="#work" class="btn btn-dark-custom px-4">View my work</a>
+          </div>
+
+        
+      </div>
+
+      <!-- Right: Photo -->
+      <div class="col-lg-6">
+        <div class="position-relative">
+          <!-- Decorative background shape -->
+          <div class="position-absolute" style="top: -20px; right: -20px; width: 200px; height: 200px; background: linear-gradient(135deg, #2563eb 0%, #0a2540 100%); border-radius: 30px; opacity: 0.08; z-index: 0;"></div>
+          <div class="position-absolute" style="bottom: -20px; left: -20px; width: 150px; height: 150px; background: #2563eb; border-radius: 50%; opacity: 0.06; z-index: 0;"></div>
+
+          <!-- Photo container -->
+          <div class="position-relative" style="z-index: 1;">
+            <img src="img/profile.jpg" 
+                 alt="Botoho Sumi" 
+                 class="img-fluid rounded-4 shadow-sm" 
+                 style="width: 100%; height: 520px; object-fit: cover; border: 1px solid #e9edf2;">
+            
+            <!-- Floating status card -->
+            <div class="position-absolute bg-white p-3 rounded-4 shadow-sm border" 
+                 style="bottom: 24px; left: 24px; right: 24px; border-color: #e9edf2 !important; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.95);">
+              <div class="d-flex align-items-center gap-3">
+                <div style="width: 12px; height: 12px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);"></div>
+                <div>
+                  <div class="fw-semibold" style="color: #0a2540; font-size: 0.9rem;">Available for collaboration</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- Skills / About Section -->
+  <section id="skills" class="py-5" style="background-color: #ffffff;">
+    <div class="container">
+      <div class="row g-5 align-items-center">
+        <div class="col-lg-12">
+          <div class="row g-3">
+            <div class="col-4 col-md-4">
+              <div class="bg-light p-4 rounded-4 text-center h-100" style="background: #f1f5f9 !important;">
+                <i class="fas fa-code fa-2x mb-2" style="color: #0a2540;"></i>
+                <h6 class="fw-bold mb-1">10+</h6>
+                <span class="text-secondary small">Years coding</span>
+              </div>
+            </div>
+
+            <div class="col-4 col-md-4">
+              <div class="bg-light p-4 rounded-4 text-center h-100" style="background: #f1f5f9 !important;">
+                <i class="fas fa-mug-hot fa-2x mb-2" style="color: #0a2540;"></i>
+                <h6 class="fw-bold mb-1">∞</h6>
+                <span class="text-secondary small">Cups of coffee</span>
+              </div>
+            </div>
+
+            <div class="col-4 col-md-4">
+              <div class="bg-light p-4 rounded-4 text-center h-100" style="background: #f1f5f9 !important;">
+                <i class="fas fa-heart fa-2x mb-2" style="color: #0a2540;"></i>
+                <h6 class="fw-bold mb-1">∞</h6>
+                <span class="text-secondary small">Passion</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Work / Projects Section -->
+  <section id="work" class="py-5 my-4">
+    <div class="container">
+      <h2 class="section-title">Projects & Contributions</h2>
+      <div class="row g-4">
+        <!-- Project 1 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card-project">
+            <img src="img/projects/acadnu.png" class="card-img-top" alt="Dashboard UI">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="fas fa-chart-pie" style="color: #2563eb;"></i>
+                <span class="text-uppercase small fw-semibold text-secondary">Web app</span>
+              </div>
+              <h5 class="card-title fw-bold mb-2">Academic Portal</h5>
+              <p class="card-text text-secondary mb-3" style="font-size: 0.95rem;">A portal for Academic Section, Nagaland University, Lumami Campus to streamline academic workflows — attending, organizing, and track university services from a single hub.</p>
+				
+				<div>
+					<span class="tech-tag">Bootstrap 5</span>
+					<span class="tech-tag">PHP</span>
+				  </div>
+				
+              <div class="mt-3 d-flex gap-2">
+                <a href="https://acad.nagalanduniversity.ac.in/" target="_blank" class="btn btn-sm btn-outline-dark-custom py-1 px-3">Live demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Project 2 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card-project">
+            <img src="img/projects/sasalumni.png" class="card-img-top" alt="Mobile app">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="fas fa-chart-pie" style="color: #2563eb;"></i>
+                <span class="text-uppercase small fw-semibold text-secondary">Web App</span>
+              </div>
+              <h5 class="card-title fw-bold mb-2">SAS Alumni Portal</h5>
+              <p class="card-text text-secondary mb-3" style="font-size: 0.95rem;">A dedicated alumni portal for the School of Agricultural Sciences (SAS), Nagaland University, designed to connect alumni, students, faculty.</p>
+              <div>
+                <span class="tech-tag">Bootstrap 5</span>
+                <span class="tech-tag">Wordpress</span>
+                <span class="tech-tag">Google OAuth</span>
+              </div>
+              <div class="mt-3 d-flex gap-2">
+                <a href="https://alumniassociationsasnu.com/" target="_blank" class="btn btn-sm btn-outline-dark-custom py-1 px-3">Live demo</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Project 3 -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card-project">
+            <img src="img/projects/ecg.png" class="card-img-top" alt="E‑commerce">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="fas fa-laptop" style="color: #2563eb;"></i>
+                <span class="text-uppercase small fw-semibold text-secondary">Desktop App</span>
+              </div>
+              <h5 class="card-title fw-bold mb-2">Eligibilty Certificate Generator</h5>
+              <p class="card-text text-secondary mb-3" style="font-size: 0.95rem;">A desktop application developed for Nagaland University to automate the generation of eligibility certificatesto produce standardized, print-ready certificates efficiently.</p>
+              <div>
+                <span class="tech-tag">C#</span>
+                <span class="tech-tag">Winforms</span>
+                <span class="tech-tag">iTextSharp</span>
+              </div>
+              <div class="mt-3 d-flex gap-2">
+                <a href="#" class="btn btn-sm btn-outline-dark-custom py-1 px-3">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+		<!-- Project 4 -->
+		<div class="col-md-6 col-lg-4">
+          <div class="card-project">
+            <img src="img/projects/scholarsuite.png" class="card-img-top" alt="E‑commerce">
+            <div class="card-body">
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <i class="fas fa-laptop" style="color: #2563eb;"></i>
+                <span class="text-uppercase small fw-semibold text-secondary">Desktop App</span>
+              </div>
+              <h5 class="card-title fw-bold mb-2">Ph.D. Scholars Suite</h5>
+              <p class="card-text text-secondary mb-3" style="font-size: 0.95rem;">A desktop application for Nagaland University that streamlines Ph.D. scholar registrations and automates the generation of registration letters and registration cards.</p>
+              <div>
+                <span class="tech-tag">C#</span>
+                <span class="tech-tag">Winforms</span>
+                <span class="tech-tag">Microsoft Word Interop</span>
+              </div>
+              <div class="mt-3 d-flex gap-2">
+                <a href="#" class="btn btn-sm btn-outline-dark-custom py-1 px-3">View Project</a>
+              </div>
+            </div>
+          </div>
+        </div>
+		
+		
+        
+        
+      </div>
+	  
+	  
+	  <!-- Project 4 
+      <div class="text-center mt-5">
+        <a href="#" class="btn btn-outline-dark-custom px-4">See all projects <i class="fas fa-arrow-right ms-2"></i></a>
+      </div>-->
+	  
+	  
+	  
+    </div>
+  </section>
+
+
+
+
+  <footer class="footer py-4 mt-2">
+    <div class="container">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+        <span class="small">© Botoho Sumi. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS bundle (for navbar collapse) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
