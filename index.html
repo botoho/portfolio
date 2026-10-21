@@ -3,304 +3,711 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Botoho Sumi · Portfolio</title>
+  <title>Botoho Sumi - Google Search</title>
+
   <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome 6 (free icons) -->
+  <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Google Font (Inter) for a clean look -->
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+
   <style>
-    * {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    :root {
+      --g-blue: #1a0dab;
+      --g-blue-visited: #681da8;
+      --g-text: #202124;
+      --g-text-soft: #4d5156;
+      --g-url: #202124;
+      --g-border: #ebebeb;
+      --g-bg: #ffffff;
+      --g-bg-alt: #f2f2f2;
     }
+
+    * { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
+
     body {
-      background-color: #f8fafc;
-      color: #0b1c2e;
+      background: var(--g-bg);
+      color: var(--g-text);
       scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
     }
-    .navbar {
-      background-color: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-      transition: all 0.2s ease;
+
+    /* ---------- Header ---------- */
+    .google-header {
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+      background: #fff;
+      border-bottom: 1px solid var(--g-border);
     }
-    .navbar-brand {
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #0a2540;
+
+    .google-logo {
+      font-size: 1.75rem;
+      font-weight: 600;
+      letter-spacing: -0.06em;
+      text-decoration: none;
+      line-height: 1;
+      white-space: nowrap;
+      user-select: none;
     }
-    .hero-section {
-      background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-      padding: 6rem 0 5rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.03);
-    }
-    .hero-headline {
-      font-size: 3.5rem;
-      font-weight: 700;
-      line-height: 1.2;
-      letter-spacing: -0.03em;
-    }
-    .hero-subhead {
-      font-size: 1.25rem;
-      color: #475569;
-      max-width: 600px;
-    }
-    .badge-skill {
-      background-color: #eef2f6;
-      color: #1e293b;
-      font-weight: 500;
-      padding: 0.5rem 1rem;
-      border-radius: 30px;
-      margin-right: 0.5rem;
-      margin-bottom: 0.5rem;
-      display: inline-block;
-      transition: all 0.15s ease;
-      border: 1px solid #e2e8f0;
-    }
-    .badge-skill:hover {
-      background-color: #ffffff;
-      border-color: #94a3b8;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
-    }
-    .card-project {
-      border: 1px solid #e9edf2;
-      border-radius: 20px;
-      background: #ffffff;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      height: 100%;
-      overflow: hidden;
-    }
-    .card-project:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 18px 30px -12px rgba(0, 20, 30, 0.12);
-      border-color: #cdd9e6;
-    }
-    .card-project .card-img-top {
-      height: 200px;
-      object-fit: cover;
-      background-color: #eef2f6;
-      border-bottom: 1px solid #e9edf2;
-    }
-    .card-project .card-body {
-      padding: 1.75rem 1.5rem 1.5rem;
-    }
-    .tech-tag {
-      background-color: #eef2f6;
-      color: #1e293b;
-      font-size: 0.75rem;
-      font-weight: 500;
-      padding: 0.25rem 0.75rem;
-      border-radius: 20px;
-      display: inline-block;
-      margin-right: 0.4rem;
-      margin-bottom: 0.4rem;
-    }
-    .footer {
-      background-color: #ffffff;
-      border-top: 1px solid rgba(0, 0, 0, 0.04);
-      color: #475569;
-    }
-    .section-title {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 2rem;
-      color: #0a2540;
-    }
-    .btn-outline-dark-custom {
-      border: 1px solid #cdd9e6;
-      background: white;
-      color: #1e293b;
-      border-radius: 40px;
-      padding: 0.6rem 1.5rem;
-      font-weight: 500;
-      transition: all 0.2s;
-    }
-    .btn-outline-dark-custom:hover {
-      background: #0a2540;
-      color: white;
-      border-color: #0a2540;
-    }
-    .btn-dark-custom {
-      background: #0a2540;
-      color: white;
-      border-radius: 40px;
-      padding: 0.6rem 1.5rem;
-      font-weight: 500;
-      border: 1px solid #0a2540;
-      transition: all 0.2s;
-    }
-    .btn-dark-custom:hover {
-      background: #1e3a5f;
-      border-color: #1e3a5f;
-    }
-    .profile-icon {
-      width: 130px;
-      height: 130px;
-      background: #ffffff;
-      border: 1px solid #e2e8f0;
-      border-radius: 50%;
+    .google-logo:hover { text-decoration: none; }
+
+    /* Search bar */
+    .search-shell {
+      flex: 1 1 auto;
+      max-width: 690px;
+      background: #fff;
+      border: 1px solid #dfe1e5;
+      border-radius: 999px;
+      padding: 0.45rem 1rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-size: 3.5rem;
-      color: #0a2540;
-      box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.08);
+      gap: 0.75rem;
+      transition: box-shadow .18s ease, border-color .18s ease;
     }
-    .list-contact i {
-      width: 1.5rem;
+    .search-shell:hover,
+    .search-shell:focus-within {
+      box-shadow: 0 1px 6px rgba(32,33,36,.28);
+      border-color: rgba(223,225,229,0);
+    }
+    .search-shell input {
+      border: 0;
+      outline: 0;
+      flex: 1;
+      font-size: 1rem;
+      color: var(--g-text);
+      background: transparent;
+      min-width: 0;
+    }
+    .search-shell .icon-btn {
+      border: 0;
+      background: transparent;
+      color: #4285f4;
+      font-size: 1rem;
+      padding: 0;
+      line-height: 1;
+    }
+    .search-shell .icon-btn.muted { color: #70757a; }
+
+    .header-tools a {
+      color: #5f6368;
+      font-size: 1.1rem;
+      text-decoration: none;
+    }
+    .header-tools a:hover { color: var(--g-text); }
+
+    .avatar-circle {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #4285f4, #0a2540);
+      color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .8rem; font-weight: 600;
+    }
+
+    /* Tabs */
+    .tabs-bar {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+      padding: 0 1rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs-bar::-webkit-scrollbar { display: none; }
+
+    .tab-link {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .65rem 0 .55rem;
+      font-size: .875rem;
+      color: #5f6368;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .tab-link:hover { color: var(--g-text); }
+    .tab-link.active { color: var(--g-blue); font-weight: 500; }
+    .tab-link.active::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 3px;
+      background: var(--g-blue);
+      border-radius: 3px 3px 0 0;
+    }
+
+    /* ---------- Layout ---------- */
+    .page-wrap { max-width: 1280px; }
+
+    .results-meta {
+      font-size: .8rem;
+      color: #70757a;
+      padding-top: .9rem;
+      padding-bottom: .35rem;
+    }
+
+    /* ---------- Result items ---------- */
+    .result {
+      margin-bottom: 2rem;
+      max-width: 652px;
+    }
+
+    .result-crumb {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      margin-bottom: .3rem;
+    }
+    .favicon-dot {
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: #f1f3f4;
+      border: 1px solid #e8eaed;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .65rem;
       color: #0a2540;
+      flex-shrink: 0;
+    }
+    .crumb-text { font-size: .78rem; line-height: 1.25; }
+    .crumb-site { color: var(--g-url); }
+    .crumb-path { color: #5f6368; }
+
+    .result-title {
+      display: inline-block;
+      font-size: 1.25rem;
+      line-height: 1.3;
+      color: var(--g-blue);
+      text-decoration: none;
+      margin-bottom: .18rem;
+    }
+    .result-title:hover { text-decoration: underline; }
+    .result-title:visited { color: var(--g-blue-visited); }
+
+    .result-desc {
+      font-size: .875rem;
+      line-height: 1.58;
+      color: var(--g-text-soft);
+      margin: 0;
+    }
+    .result-desc strong { color: var(--g-text); font-weight: 600; }
+
+    /* Sub-links */
+    .sublinks { margin-top: .45rem; }
+    .sublinks a {
+      display: block;
+      font-size: .875rem;
+      color: var(--g-blue);
+      text-decoration: none;
+      margin-bottom: .15rem;
+    }
+    .sublinks a:hover { text-decoration: underline; }
+
+    /* Featured snippet card */
+    .snippet-card {
+      border: 1px solid #dadce0;
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      margin-bottom: 1.75rem;
+      max-width: 652px;
+      background: #fff;
+    }
+
+    /* People also ask */
+    .paa-title {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--g-text);
+      margin-bottom: .6rem;
+    }
+    .accordion.paa { max-width: 652px; }
+    .paa .accordion-item {
+      border: 1px solid #dadce0;
+      border-radius: 8px !important;
+      margin-bottom: -1px;
+      overflow: hidden;
+    }
+    .paa .accordion-button {
+      font-size: .95rem;
+      color: var(--g-text);
+      padding: .85rem 1rem;
+      box-shadow: none !important;
+      background: #fff;
+    }
+    .paa .accordion-button:not(.collapsed) {
+      background: #fff;
+      color: var(--g-text);
+      box-shadow: none;
+    }
+    .paa .accordion-body {
+      font-size: .875rem;
+      line-height: 1.6;
+      color: var(--g-text-soft);
+      padding-top: 0;
+    }
+    .paa .accordion-button::after {
+      background-size: .8rem;
+      width: .8rem; height: .8rem;
+    }
+
+    /* Related searches */
+    .related-title {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: .9rem;
+    }
+    .related-grid { max-width: 652px; }
+    .related-chip {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      background: #f1f3f4;
+      border-radius: 999px;
+      padding: .55rem 1rem;
+      font-size: .875rem;
+      color: var(--g-text);
+      text-decoration: none;
+      transition: background .15s ease;
+      height: 100%;
+    }
+    .related-chip:hover { background: #e8eaed; color: var(--g-text); }
+    .related-chip i { color: #5f6368; font-size: .8rem; }
+
+    /* ---------- Knowledge panel ---------- */
+    .knowledge-panel {
+      border: 1px solid #dadce0;
+      border-radius: 8px;
+      overflow: hidden;
+      position: sticky;
+      top: 132px;
+      background: #fff;
+    }
+    .kp-body { padding: 1.25rem 1.25rem 1rem; }
+
+    .kp-name {
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      margin-bottom: .1rem;
+      line-height: 1.2;
+    }
+    .kp-role {
+      font-size: .875rem;
+      color: #70757a;
+      margin-bottom: 1rem;
+    }
+
+    .kp-photo {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 1px solid #e8eaed;
+      background: #f1f3f4;
+    }
+
+    .kp-desc {
+      font-size: .85rem;
+      line-height: 1.6;
+      color: var(--g-text-soft);
+      margin: .9rem 0 1rem;
+    }
+
+    .kp-row {
+      display: flex;
+      align-items: flex-start;
+      gap: .7rem;
+      font-size: .85rem;
+      padding: .45rem 0;
+      color: var(--g-text-soft);
+      text-decoration: none;
+    }
+    .kp-row i { color: #5f6368; width: 16px; margin-top: 2px; flex-shrink: 0; }
+    a.kp-row:hover { color: var(--g-blue); }
+    a.kp-row:hover i { color: var(--g-blue); }
+
+    .kp-section-label {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      font-weight: 600;
+      color: #70757a;
+      margin: 1.1rem 0 .5rem;
+    }
+
+    .kp-chip {
+      display: inline-block;
+      background: #f1f3f4;
+      color: var(--g-text);
+      font-size: .75rem;
+      padding: .25rem .65rem;
+      border-radius: 999px;
+      margin: 0 .35rem .35rem 0;
+    }
+
+    .kp-profile-links a {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      font-size: .85rem;
+      color: var(--g-blue);
+      text-decoration: none;
+      padding: .35rem 0;
+    }
+    .kp-profile-links a:hover { text-decoration: underline; }
+    .kp-profile-links i { color: #5f6368; width: 16px; }
+
+    .availability-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font-size: .75rem;
+      font-weight: 500;
+      color: #137333;
+      background: #e6f4ea;
+      border-radius: 999px;
+      padding: .3rem .7rem;
+      margin-top: .85rem;
+    }
+    .availability-pill .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #1e8e3e;
+    }
+
+    /* ---------- Footer ---------- */
+    .google-footer {
+      background: var(--g-bg-alt);
+      border-top: 1px solid var(--g-border);
+      font-size: .85rem;
+      color: #70757a;
+      margin-top: 2.5rem;
+    }
+    .google-footer a {
+      color: #70757a;
+      text-decoration: none;
+    }
+    .google-footer a:hover { color: var(--g-text); text-decoration: underline; }
+
+    /* Small screens */
+    @media (max-width: 991.98px) {
+      .knowledge-panel { position: static; margin-top: 1rem; }
+      .kp-photo { height: 300px; }
+    }
+    @media (max-width: 575.98px) {
+      .google-logo { font-size: 1.4rem; }
+      .result-title { font-size: 1.1rem; }
+      .kp-name { font-size: 1.35rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg fixed-top py-3">
-    <div class="container">
-      <a class="navbar-brand" href="#"><i class="fas fa-code"></i>  Botoho Sumi</a>
-      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNav">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1">
-          
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-  
-  <!-- Contact Section with Photo on Right -->
-<section class="hero-section" style="margin-top: 76px" style="background-color: #f8fafc;">
-  <div class="container">
-    <div class="row g-5 align-items-center">
-      <!-- Left: Contact Details -->
-      <div class="col-lg-6">
-        <h2 class="section-title mb-3">Hi!</h2>
-        <p class="text-secondary mb-4" style="font-size: 1.05rem; line-height: 1.7;">
-          I'm Botoho Sumi — a developer and designer who enjoys building clean, functional, and user-friendly digital experiences. I create web applications and desktop applications designed to solve real-world problems and make everyday workflows more efficient.
-        </p>
-		
-		
+  <!-- ================= HEADER ================= -->
+  <header class="google-header">
+    <div class="container-fluid px-3 px-md-4 pt-3">
+      <div class="d-flex align-items-center gap-3 gap-md-4 pb-2">
 
-        <!-- Contact details list -->
-        <div class="mb-4">
-          <!-- Email -->
-          <a href="mailto:alex.rivera@nagalanduniversity.ac.in" class="text-decoration-none d-flex align-items-start gap-3 p-3 mb-3 rounded-4 contact-item" style="background: #ffffff; border: 1px solid #e9edf2; transition: all 0.2s ease;">
-            <div class="contact-icon-wrapper" style="width: 48px; height: 48px; background: #eef2f6; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <i class="fas fa-envelope" style="color: #2563eb; font-size: 1.2rem;"></i>
-            </div>
-            <div>
-              <div class="project-meta-label" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.03em; font-weight: 600; color: #64748b; margin-bottom: 0.15rem;">Email</div>
-              <div class="fw-semibold" style="color: #0a2540; font-size: 0.95rem;">botohosumi@live.in</div>
-            </div>
-          </a>
+        <!-- Logo -->
+        <a href="#top" class="google-logo" aria-label="Google">
+          <span style="color:#4285F4">G</span><span style="color:#EA4335">o</span><span style="color:#FBBC05">o</span><span style="color:#4285F4">g</span><span style="color:#34A853">l</span><span style="color:#EA4335">e</span>
+        </a>
 
-          <!-- Phone -->
-          <a href="tel:+919876543210" class="text-decoration-none d-flex align-items-start gap-3 p-3 mb-3 rounded-4 contact-item" style="background: #ffffff; border: 1px solid #e9edf2; transition: all 0.2s ease;">
-            <div class="contact-icon-wrapper" style="width: 48px; height: 48px; background: #eef2f6; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <i class="fas fa-phone-alt" style="color: #2563eb; font-size: 1.2rem;"></i>
-            </div>
-            <div>
-              <div class="project-meta-label" style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.03em; font-weight: 600; color: #64748b; margin-bottom: 0.15rem;">Phone</div>
-              <div class="fw-semibold" style="color: #0a2540; font-size: 0.95rem;">+91 70050 19178</div>
-            </div>
+        <!-- Search bar -->
+        <form class="search-shell" onsubmit="return false;">
+          <i class="fas fa-magnifying-glass" style="color:#9aa0a6; font-size:.95rem;"></i>
+          <input type="text" value="Botoho Sumi" aria-label="Search" spellcheck="false">
+          <button type="button" class="icon-btn" aria-label="Search by voice">
+            <i class="fas fa-microphone"></i>
+          </button>
+          <button type="button" class="icon-btn" aria-label="Search by image">
+            <i class="fas fa-camera"></i>
+          </button>
+        </form>
+
+        <!-- Right tools -->
+        <div class="header-tools d-none d-md-flex align-items-center gap-3 ms-auto">
+          <a href="#" aria-label="Google apps"><i class="fas fa-grip-vertical"></i></a>
+          <a href="#contact" aria-label="Profile" class="d-flex">
+            <span class="avatar-circle">BS</span>
           </a>
         </div>
-		
-		<div class="d-flex flex-wrap gap-3">
-            
-          </div>
-
-        
-      </div>
-
-      <!-- Right: Photo -->
-      <div class="col-lg-6">
-        <div class="position-relative">
-          <!-- Decorative background shape -->
-          <div class="position-absolute" style="top: -20px; right: -20px; width: 200px; height: 200px; background: linear-gradient(135deg, #2563eb 0%, #0a2540 100%); border-radius: 30px; opacity: 0.08; z-index: 0;"></div>
-          <div class="position-absolute" style="bottom: -20px; left: -20px; width: 150px; height: 150px; background: #2563eb; border-radius: 50%; opacity: 0.06; z-index: 0;"></div>
-
-          <!-- Photo container -->
-          <div class="position-relative" style="z-index: 1;">
-            <img src="img/profile.jpg" 
-                 alt="Botoho Sumi" 
-                 class="img-fluid rounded-4 shadow-sm" 
-                 style="width: 100%; height: 520px; object-fit: cover; border: 1px solid #e9edf2;">
-            
-            <!-- Floating status card -->
-            <div class="position-absolute bg-white p-3 rounded-4 shadow-sm border" 
-                 style="bottom: 24px; left: 24px; right: 24px; border-color: #e9edf2 !important; backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.95);">
-              <div class="d-flex align-items-center gap-3">
-                <div style="width: 12px; height: 12px; background: #22c55e; border-radius: 50%; box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);"></div>
-                <div>
-                  <div class="fw-semibold" style="color: #0a2540; font-size: 0.9rem;">Available for collaboration</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
-  </div>
-</section>
 
-  <!-- Skills / About Section -->
-  <section id="skills" class="py-5" style="background-color: #ffffff;">
-    <div class="container">
-      <div class="row g-5 align-items-center">
-        <div class="col-lg-12">
-          <div class="row g-3">
-            <div class="col-4 col-md-4">
-              <div class="bg-light p-4 rounded-4 text-center h-100" style="background: #f1f5f9 !important;">
-                <i class="fas fa-code fa-2x mb-2" style="color: #0a2540;"></i>
-                <h6 class="fw-bold mb-1">10+</h6>
-                <span class="text-secondary small">Years coding</span>
-              </div>
+    <!-- Tabs -->
+    <div class="container-fluid px-3 px-md-4">
+      <nav class="tabs-bar">
+        <a class="tab-link active" href="#top"><i class="fas fa-magnifying-glass"></i> All</a>
+        <a class="tab-link" href="#projects">Projects</a>
+        <a class="tab-link" href="#skills">Skills</a>
+        <a class="tab-link" href="#contact">Contact</a>
+        <a class="tab-link" href="#profiles">Profiles</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= MAIN ================= -->
+  <main id="top" class="container page-wrap py-2">
+    <div class="results-meta">About 12,400 results (0.42 seconds)</div>
+
+    <div class="row g-4 g-lg-5 pt-2">
+
+      <!-- ============ LEFT: RESULTS ============ -->
+      <div class="col-lg-7 col-xl-8">
+
+        <!-- Featured snippet / result 1 -->
+        <div class="snippet-card">
+          <div class="result-crumb mb-2">
+            <span class="favicon-dot"><i class="fas fa-code"></i></span>
+            <div class="crumb-text">
+              <div class="crumb-site">botohosumi.dev</div>
+              <div class="crumb-path">https://botohosumi.dev</div>
             </div>
+          </div>
+          <a href="#top" class="result-title">Botoho Sumi — Developer &amp; Designer</a>
+          <p class="result-desc mt-2">
+            I'm <strong>Botoho Sumi</strong>, a developer and designer who enjoys building clean, functional
+            and user-friendly digital experiences. I create web applications and desktop applications
+            designed to solve real-world problems and make everyday workflows more efficient.
+          </p>
+          <div class="availability-pill">
+            <span class="dot"></span> Available for collaboration
+          </div>
+        </div>
 
-            <div class="col-4 col-md-4">
-              <div class="bg-light p-4 rounded-4 text-center h-100" style="background: #f1f5f9 !important;">
-                <i class="fas fa-mug-hot fa-2x mb-2" style="color: #0a2540;"></i>
-                <h6 class="fw-bold mb-1">∞</h6>
-                <span class="text-secondary small">Cups of coffee</span>
-              </div>
-            </div>
+        <!-- People also ask -->
+        <h2 class="paa-title">People also ask</h2>
+        <div class="accordion paa" id="paaAccordion">
 
-            <div class="col-4 col-md-4">
-              <div class="bg-light p-4 rounded-4 text-center h-100" style="background: #f1f5f9 !important;">
-                <i class="fas fa-heart fa-2x mb-2" style="color: #0a2540;"></i>
-                <h6 class="fw-bold mb-1">∞</h6>
-                <span class="text-secondary small">Passion</span>
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#paa1">
+                What does Botoho Sumi do?
+              </button>
+            </h3>
+            <div id="paa1" class="accordion-collapse collapse" data-bs-parent="#paaAccordion">
+              <div class="accordion-body">
+                Botoho designs and builds web and desktop applications — from interface design to
+                deployment — with a focus on usability, performance and maintainable code.
               </div>
             </div>
           </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#paa2">
+                Which technologies does Botoho work with?
+              </button>
+            </h3>
+            <div id="paa2" class="accordion-collapse collapse" data-bs-parent="#paaAccordion">
+              <div class="accordion-body">
+                HTML, CSS, JavaScript, Bootstrap, Python, C#/.NET, SQL and modern design tooling.
+                Comfortable across both front-end interfaces and back-end logic.
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h3 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#paa3">
+                Is Botoho available for freelance work?
+              </button>
+            </h3>
+            <div id="paa3" class="accordion-collapse collapse" data-bs-parent="#paaAccordion">
+              <div class="accordion-body">
+                Yes — currently open to collaborations, freelance projects and interesting
+                product ideas. Reach out by email or phone.
+              </div>
+            </div>
+          </div>
+
         </div>
+
+        <div class="my-4"></div>
+
+        <!-- Result: Projects -->
+        <div class="result" id="projects">
+          <div class="result-crumb">
+            <span class="favicon-dot"><i class="fas fa-folder-open"></i></span>
+            <div class="crumb-text">
+              <div class="crumb-site">botohosumi.dev</div>
+              <div class="crumb-path">https://botohosumi.dev › projects</div>
+            </div>
+          </div>
+          <a href="#projects" class="result-title">Projects — Botoho Sumi</a>
+          <p class="result-desc">
+            A selection of things I've designed and built: dashboards, admin panels,
+            desktop utilities and small web tools. Each project focuses on solving a
+            real problem with a simple, honest interface.
+          </p>
+          <div class="sublinks">
+            <a href="#projects">Inventory Management System — desktop app for small retailers</a>
+            <a href="#projects">Student Records Portal — web app with role-based access</a>
+            <a href="#projects">Analytics Dashboard — clean charts and quick filters</a>
+          </div>
+        </div>
+
+        <!-- Result: Skills -->
+        <div class="result" id="skills">
+          <div class="result-crumb">
+            <span class="favicon-dot"><i class="fas fa-layer-group"></i></span>
+            <div class="crumb-text">
+              <div class="crumb-site">botohosumi.dev</div>
+              <div class="crumb-path">https://botohosumi.dev › skills</div>
+            </div>
+          </div>
+          <a href="#skills" class="result-title">Skills &amp; Experience — 10+ years of coding</a>
+          <p class="result-desc">
+            Front-end: HTML, CSS, JavaScript, Bootstrap. Back-end: Python, C#/.NET, SQL.
+            Design: UI layout, typography, prototyping. Plus infinite cups of coffee and
+            a genuine love for the craft.
+          </p>
+        </div>
+
+        <!-- Result: Contact -->
+        <div class="result" id="contact">
+          <div class="result-crumb">
+            <span class="favicon-dot"><i class="fas fa-envelope"></i></span>
+            <div class="crumb-text">
+              <div class="crumb-site">botohosumi.dev</div>
+              <div class="crumb-path">https://botohosumi.dev › contact</div>
+            </div>
+          </div>
+          <a href="#contact" class="result-title">Contact Botoho Sumi</a>
+          <p class="result-desc">
+            Email: <strong>botohosumi@live.in</strong> &nbsp;·&nbsp; Phone: <strong>+91 70050 19178</strong><br>
+            Based in Nagaland, India. Open to remote collaboration and freelance projects.
+          </p>
+        </div>
+
+        <!-- Result: Profiles -->
+        <div class="result" id="profiles">
+          <div class="result-crumb">
+            <span class="favicon-dot"><i class="fab fa-github"></i></span>
+            <div class="crumb-text">
+              <div class="crumb-site">github.com</div>
+              <div class="crumb-path">https://github.com › botohosumi</div>
+            </div>
+          </div>
+          <a href="#profiles" class="result-title">Botoho Sumi · GitHub</a>
+          <p class="result-desc">
+            Open-source experiments, utilities and side projects. Source code for the
+            apps listed above, plus a few unfinished ideas worth keeping.
+          </p>
+        </div>
+
+        <div class="result">
+          <div class="result-crumb">
+            <span class="favicon-dot"><i class="fab fa-linkedin-in"></i></span>
+            <div class="crumb-text">
+              <div class="crumb-site">linkedin.com</div>
+              <div class="crumb-path">https://linkedin.com › in › botoho-sumi</div>
+            </div>
+          </div>
+          <a href="#profiles" class="result-title">Botoho Sumi — Developer &amp; Designer · LinkedIn</a>
+          <p class="result-desc">
+            Professional profile, experience timeline and recommendations.
+            Developer and designer building practical software for everyday workflows.
+          </p>
+        </div>
+
+        <!-- Related searches -->
+        <h2 class="related-title">Related searches</h2>
+        <div class="row g-2 related-grid">
+          <div class="col-sm-6">
+            <a class="related-chip" href="#projects"><i class="fas fa-magnifying-glass"></i> Botoho Sumi projects</a>
+          </div>
+          <div class="col-sm-6">
+            <a class="related-chip" href="#skills"><i class="fas fa-magnifying-glass"></i> Botoho Sumi skills</a>
+          </div>
+          <div class="col-sm-6">
+            <a class="related-chip" href="#contact"><i class="fas fa-magnifying-glass"></i> Botoho Sumi contact</a>
+          </div>
+          <div class="col-sm-6">
+            <a class="related-chip" href="#profiles"><i class="fas fa-magnifying-glass"></i> Botoho Sumi GitHub</a>
+          </div>
+        </div>
+
       </div>
+
+      <!-- ============ RIGHT: KNOWLEDGE PANEL ============ -->
+      <div class="col-lg-5 col-xl-4">
+        <aside class="knowledge-panel">
+          <div class="kp-body">
+
+            <h2 class="kp-name">Botoho Sumi</h2>
+            <div class="kp-role">Developer &amp; Designer</div>
+
+            <img src="img/profile.jpg" alt="Botoho Sumi" class="kp-photo">
+
+            <p class="kp-desc">
+              Builds clean, functional and user-friendly web and desktop applications
+              that solve real-world problems.
+            </p>
+
+            <!-- Contact rows -->
+            <a href="mailto:botohosumi@live.in" class="kp-row">
+              <i class="fas fa-envelope"></i>
+              <span>botohosumi@live.in</span>
+            </a>
+            <a href="tel:+917005019178" class="kp-row">
+              <i class="fas fa-phone-alt"></i>
+              <span>+91 70050 19178</span>
+            </a>
+            <div class="kp-row">
+              <i class="fas fa-location-dot"></i>
+              <span>Nagaland, India</span>
+            </div>
+
+            <!-- Skills -->
+            <div class="kp-section-label">Skills</div>
+            <div>
+              <span class="kp-chip">HTML</span>
+              <span class="kp-chip">CSS</span>
+              <span class="kp-chip">JavaScript</span>
+              <span class="kp-chip">Bootstrap</span>
+              <span class="kp-chip">Python</span>
+              <span class="kp-chip">C# / .NET</span>
+              <span class="kp-chip">SQL</span>
+              <span class="kp-chip">UI Design</span>
+            </div>
+
+            <!-- Profiles -->
+            <div class="kp-section-label">Profiles</div>
+            <div class="kp-profile-links">
+              <a href="#profiles"><i class="fab fa-github"></i> github.com/botohosumi</a>
+              <a href="#profiles"><i class="fab fa-linkedin-in"></i> linkedin.com/in/botoho-sumi</a>
+              <a href="#top"><i class="fas fa-globe"></i> botohosumi.dev</a>
+            </div>
+
+            <div class="availability-pill">
+              <span class="dot"></span> Available for collaboration
+            </div>
+
+          </div>
+        </aside>
+      </div>
+
     </div>
-  </section>
+  </main>
 
-	
-		
-        
-        
-     
-
-
-
-
-  <footer class="footer py-4 mt-2">
-    <div class="container">
-      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-        <span class="small">© Botoho Sumi. All rights reserved.</span>
+  <!-- ================= FOOTER ================= -->
+  <footer class="google-footer py-3">
+    <div class="container page-wrap">
+      <div class="d-flex flex-column flex-md-row justify-content-between gap-2">
+        <span>&copy; Botoho Sumi. All rights reserved.</span>
+        <div class="d-flex gap-4">
+          <a href="#top">Privacy</a>
+          <a href="#top">Terms</a>
+          <a href="#contact">Contact</a>
+        </div>
       </div>
     </div>
   </footer>
 
-  <!-- Bootstrap JS bundle (for navbar collapse) -->
+  <!-- Bootstrap JS bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
